@@ -1,6 +1,12 @@
 {%for idea in ideas %}
     <div class="idea">
         <img src="{{ idea.image }}" alt="Imagem de {{ idea.title }}">
+        <form action="/?_method=DELETE" method="POST" id="delete-idea">
+            <input type="hidden" name="id" value="{{ idea.id }}">
+            <button class="delete-icon">
+                <img src="https://image.flaticon.com/icons/svg/458/458595.svg" alt="Ícone de deletar">
+            </button>
+        </form>
         <div class="content">
             <h3>{{ idea.title }}</h3>
             <p>{{ idea.category }}</p>

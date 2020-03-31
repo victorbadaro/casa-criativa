@@ -65,6 +65,10 @@ p, .description {
     margin-right: 64px;
 }
 
+#last-ideas {
+    width: 100%;
+}
+
 main {
     margin: 32px 0;
 }
@@ -105,6 +109,8 @@ footer a {
 }
 
 .idea {
+    position: relative;
+    box-sizing: border-box;
     display: flex;
     margin-bottom: 32px;
     background-color: #FFF;
@@ -117,6 +123,28 @@ footer a {
     width: 60px;
     height: 60px;
     margin-right: 32px;
+}
+
+.idea form#delete-idea {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+}
+
+.idea button.delete-icon {
+    margin: 0;
+    width: fit-content;
+    height: fit-content;
+}
+
+.idea button.delete-icon:hover {
+    background: none;
+}
+
+.idea button.delete-icon img {
+    width: 20px;
+    height: 20px;
+    margin: 0;
 }
 
 .idea h3 {

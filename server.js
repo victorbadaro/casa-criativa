@@ -1,4 +1,5 @@
 const express = require('express')
+const methodOverride = require('method-override')
 const server = express()
 
 const db = require('./db')
@@ -6,6 +7,8 @@ const db = require('./db')
 server.use(express.static('public'))
 
 server.use(express.urlencoded({ extended: true }))
+
+server.use(methodOverride('_method'))
 
 const nunjucks = require('nunjucks')
 nunjucks.configure('views', {
@@ -64,6 +67,18 @@ server.post('/', function(req, res) {
     ]
 
     db.run(query, values, function(err) {
+        if (err) {
+            console.log(err)
+            return res.send('Erro no banco de dados!')
+        }
+
+        return res.redirect('/ideas')
+    })
+})
+
+server.delete('/', function(req, res) {
+    const { id } = req.body
+    db.run(`DELETE FROM ideas WHERE id = ?`, [id], function(err) {
         if (err) {
             console.log(err)
             return res.send('Erro no banco de dados!')

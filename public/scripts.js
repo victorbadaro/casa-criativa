@@ -1,3 +1,14 @@
+const formDeleteIdea = document.querySelector('form#delete-idea')
+
+if (formDeleteIdea !== null) {
+    formDeleteIdea.addEventListener('submit', function(event) {
+        const confirmation = confirm('Tem certeza que deseja deletar?')
+    
+        if(!confirmation)
+            event.preventDefault()
+    })
+}
+
 function onOff() {
     document.querySelector('#modal').classList.toggle('hide')
     document.querySelector('body').classList.toggle('hideScroll')
